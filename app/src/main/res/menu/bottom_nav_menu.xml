@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ic_login"
+        android:icon="@drawable/ic_account"
+        android:title="Account"
+        />
+        <item
+            android:id="@+id/ic_alarm"
+            android:icon="@drawable/ic_alarm"
+            android:title="Alarm"
+            />
+        <item
+            android:id="@+id/ic_timer"
+            android:icon="@drawable/ic_timer"
+            android:title="Timer"
+            />
+        <item
+            android:id="@+id/ic_location"
+            android:icon="@drawable/ic_location"
+            android:title="Location"
+            />
+</menu>
