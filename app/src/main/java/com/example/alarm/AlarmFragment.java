@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class AlarmFragment<LeaveManagerFragment> extends Fragment implements View.OnClickListener {
+public class AlarmFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "AlarmFargment";
     Button btnDate, btnTime, btnSetAlarm;
