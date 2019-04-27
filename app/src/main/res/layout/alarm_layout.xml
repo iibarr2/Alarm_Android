@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SELECT DATE"
-        android:id="@+id/btn_date"
+        android:id="@+id/btn_selectdate"
         android:layout_alignBottom="@+id/in_date"
         android:layout_toRightOf="@+id/in_date"
         android:layout_toEndOf="@+id/in_date" />
@@ -48,10 +48,10 @@
         android:layout_height="wrap_content"
         android:text="SELECT TIME"
         android:layout_marginTop="20dp"
-        android:id="@+id/btn_time"
-        android:layout_below="@+id/btn_date"
-        android:layout_alignLeft="@+id/btn_date"
-        android:layout_alignStart="@+id/btn_date" />
+        android:id="@+id/btn_selecttime"
+        android:layout_below="@+id/btn_selectdate"
+        android:layout_alignLeft="@+id/btn_selectdate"
+        android:layout_alignStart="@+id/btn_selectdate" />
 
 
     <Button
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:text="SET ALARM"
         android:id="@+id/btn_setAlarm"
-        android:layout_below="@id/btn_time"
+        android:layout_below="@id/btn_selecttime"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
