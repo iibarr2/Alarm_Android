@@ -50,10 +50,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         mEditText = findViewById(R.id.in_time);
 
-        Button buttonTimePicker = findViewById(R.id.btn_selecttime);
+       final Button buttonTimePicker = findViewById(R.id.btn_selecttime);
+
         buttonTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view)
+            {
                 DialogFragment timePicker = new DialogFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
