@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private ViewPager viewPager;
 
     private EditText mEditText;
+    private EditText timePickerText;
+    private EditText datePickerText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_timer);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_location);
 
-        mEditText = findViewById(R.id.in_time);
+        mEditText = findViewById(R.id.in_Message);
+        timePickerText = findViewById(R.id.in_time);
+        datePickerText = findViewById(R.id.in_date);
 
        final Button buttonTimePicker = findViewById(R.id.btn_selecttime);
 
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View view)
             {
-                DialogFragment timePicker = new DialogFragment();
+                DialogFragment timePicker = new AlarmFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     private void updateTimeText(Calendar c){
         String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-        mEditText.setText(timeText);
+        timePickerText.setText(timeText);
 
     }
 
@@ -116,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this,1,intent,0);
 
         alarmManager.cancel(pendingIntent);
-        mEditText.setText("Alarm Cancelled");
+        timePickerText.setText("Alarm Cancelled");
+        datePickerText.setText("Alarm Cancelled");
     }
 }
