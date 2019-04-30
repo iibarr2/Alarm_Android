@@ -26,6 +26,7 @@ public class TimerFragment extends Fragment {
     private static final String TAG = "TimerFragment";
 
     private EditText mEditTextInput;
+    private EditText editMessage;
     private TextView mTextViewCountDown;
     private Button mButtonSet;
     private Button mButtonStartPause;
@@ -48,6 +49,7 @@ public class TimerFragment extends Fragment {
 
 
         mEditTextInput = view.findViewById(R.id.edit_text_input);
+        editMessage = view.findViewById(R.id.editText_userMessage);
         mTextViewCountDown = view.findViewById(R.id.text_view_countdown);
         mButtonSet = view.findViewById(R.id.button_set);
         mButtonStartPause = view.findViewById(R.id.button_start_pause);
@@ -60,6 +62,8 @@ public class TimerFragment extends Fragment {
                 long millisInput = Long.parseLong(input) * 60000;
                 setTime(millisInput);
                 mEditTextInput.setText("");
+                String message = getMessage();
+                editMessage.setText("");
 
             }
         });
@@ -84,6 +88,12 @@ public class TimerFragment extends Fragment {
         });
         return view;
 
+    }
+
+    private String getMessage(){
+        String message = editMessage.getText().toString();
+        //String message1 = message;
+        return message;
     }
 
     private void startTimer() {
@@ -121,6 +131,10 @@ public class TimerFragment extends Fragment {
         mTimeLeftInMillis = mStartTimeInMillis;
         updateCountDownText();
         updateWatchInterface();
+       // if(mTimerRunning = true)
+        //{
+           // pauseTimer();
+        //}
     }
     private void updateCountDownText() {
         int hours = (int) (mTimeLeftInMillis / 1000) / 3600;
