@@ -131,10 +131,10 @@ public class TimerFragment extends Fragment {
         mTimeLeftInMillis = mStartTimeInMillis;
         updateCountDownText();
         updateWatchInterface();
-       // if(mTimerRunning = true)
-        //{
-           // pauseTimer();
-        //}
+        if(mTimerRunning)
+        {
+           pauseTimer();
+        }
     }
     private void updateCountDownText() {
         int hours = (int) (mTimeLeftInMillis / 1000) / 3600;
@@ -154,17 +154,19 @@ public class TimerFragment extends Fragment {
     }
     private void updateWatchInterface() {
         if (mTimerRunning) {
-            // mEditTextInput.setVisibility(View.INVISIBLE);
-            // mButtonSet.setVisibility(View.INVISIBLE);
-            // mButtonReset.setVisibility(View.INVISIBLE);
             mButtonStartPause.setText("Pause");
         } else {
-            // mEditTextInput.setVisibility(View.VISIBLE);
-            // mButtonSet.setVisibility(View.VISIBLE);
+
             mButtonStartPause.setText("Start");
 
 
         }
+    }
+
+
+    private void popAlert()
+    {
+        //code need to pop alert with user message and location
     }
 }
 
