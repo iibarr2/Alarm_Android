@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.TextInputEditText
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Enter Message:"
+        android:inputType="text"
         android:id="@+id/in_Message"
         android:layout_marginTop="100dp"/>
 

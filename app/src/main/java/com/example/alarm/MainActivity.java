@@ -1,6 +1,7 @@
 package com.example.alarm;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
@@ -10,20 +11,24 @@ import android.os.Build;
 import android.provider.CalendarContract;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private static final String TAG = "MainActivity";
 
@@ -60,8 +65,17 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View view)
             {
-                DialogFragment timePicker = new AlarmFragment();
+                DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+            }
+        });
+
+        final Button buttonDatePicker = findViewById(R.id.btn_selectdate);
+        buttonDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
 
@@ -74,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
     }
+
+//    private void confirmInput(View v){
+//        String input = "Message: " + mEditText.getEditText().getText().toString();
+//        input += "\n";
+//        Toast.makeText(this,input,Toast.LENGTH_SHORT).show();
+//    }
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -122,5 +142,20 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         alarmManager.cancel(pendingIntent);
         timePickerText.setText("Alarm Cancelled");
         datePickerText.setText("Alarm Cancelled");
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        updateDateText(c);
+    }
+
+    private void updateDateText(Calendar c){
+        String dateText = DateFormat.getDateInstance(DateFormat.SHORT).format((c.getTime()));
+        datePickerText.setText(dateText);
     }
 }
