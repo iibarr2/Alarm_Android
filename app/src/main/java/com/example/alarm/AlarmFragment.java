@@ -27,14 +27,23 @@ import java.util.Calendar;
 
 public class AlarmFragment extends DialogFragment {
 
-    private static final String TAG = "AlarmFargment";
+    private static final String TAG = "TAB1";
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+
+
+
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
+        View view = inflater.inflate(R.layout.alarm_layout,container,false);
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, DateFormat.is24HourFormat(getActivity()));
+
+        return view;
+
+      // return new TimePickerDialog(getActivity(), (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
 }

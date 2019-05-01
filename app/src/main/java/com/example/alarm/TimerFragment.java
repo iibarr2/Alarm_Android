@@ -23,7 +23,7 @@ import java.util.Timer;
 
 public class TimerFragment extends Fragment {
 
-    private static final String TAG = "TimerFragment";
+    private static final String TAG = "TAB2";
 
     private EditText mEditTextInput;
     private EditText editMessage;
@@ -58,12 +58,17 @@ public class TimerFragment extends Fragment {
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String input = mEditTextInput.getText().toString();
-                long millisInput = Long.parseLong(input) * 60000;
-                setTime(millisInput);
-                mEditTextInput.setText("");
-                String message = getMessage();
-                editMessage.setText("");
+                if(mEditTextInput != null) {
+                    String input = mEditTextInput.getText().toString();
+
+                    long millisInput = Long.parseLong(input) * 60000;
+                    setTime(millisInput);
+                    mEditTextInput.setText("");
+                    String message = getMessage();
+                    editMessage.setText("")
+                    ;
+                }
+
 
             }
         });

@@ -25,17 +25,29 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        //sectionsPagerAdapter.getItem(0);
+        //tabLayout.getTabAt(0).select();
+
+
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_alarm);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_timer);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_location);
+
+
+        viewPager.setCurrentItem(0,true);
+
+
     }
+
+
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AlarmFragment());
-        adapter.addFragment(new TimerFragment());
-        adapter.addFragment(new LocationFragment());
+        adapter.addFragment(new AlarmFragment(), "TAB1");
+        adapter.addFragment(new TimerFragment(), "TAB2");
+        adapter.addFragment(new LocationFragment(), "TAB3");
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(0);
     }
 }
