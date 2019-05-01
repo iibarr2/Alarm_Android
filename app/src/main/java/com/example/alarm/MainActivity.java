@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AlarmFragment(), "TAB1");
-        adapter.addFragment(new TimerFragment(), "TAB2");
-        adapter.addFragment(new LocationFragment(), "TAB3");
+        adapter.addFragment(new AlarmFragment(), "AlarmFragment");
+        adapter.addFragment(new TimerFragment(), "TimerFragment");
+        adapter.addFragment(new LocationFragment(), "LocationFragment");
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
     }

@@ -23,7 +23,7 @@ import java.util.Timer;
 
 public class TimerFragment extends Fragment {
 
-    private static final String TAG = "TAB2";
+    private static final String TAG = "TimerFragment";
 
     private EditText mEditTextInput;
     private EditText editMessage;
