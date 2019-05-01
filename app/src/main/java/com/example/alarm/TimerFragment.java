@@ -12,6 +12,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class TimerFragment extends Fragment {
     private long mStartTimeInMillis;
     private long mTimeLeftInMillis;
     private long mEndTime;
+    private String message = null;
 
 
     @Nullable
@@ -49,6 +51,7 @@ public class TimerFragment extends Fragment {
 
 
         mEditTextInput = view.findViewById(R.id.edit_text_input);
+        mEditTextInput.setText("");
         editMessage = view.findViewById(R.id.editText_userMessage);
         mTextViewCountDown = view.findViewById(R.id.text_view_countdown);
         mButtonSet = view.findViewById(R.id.button_set);
@@ -58,15 +61,17 @@ public class TimerFragment extends Fragment {
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mEditTextInput != null) {
+                if(mEditTextInput.getText().toString().equalsIgnoreCase("")) {
+                    message = getMessage();
+                }
+                else
+                {
                     String input = mEditTextInput.getText().toString();
-
                     long millisInput = Long.parseLong(input) * 60000;
                     setTime(millisInput);
                     mEditTextInput.setText("");
-                    String message = getMessage();
-                    editMessage.setText("")
-                    ;
+                    message = getMessage();
+                    editMessage.setText("");
                 }
 
 
@@ -114,6 +119,7 @@ public class TimerFragment extends Fragment {
             @Override
             public void onFinish() {
                 mTimerRunning = false;
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                 updateWatchInterface();
             }
         }.start();
@@ -169,10 +175,7 @@ public class TimerFragment extends Fragment {
     }
 
 
-    private void popAlert()
-    {
-        //code need to pop alert with user message and location
-    }
+
 }
 
 

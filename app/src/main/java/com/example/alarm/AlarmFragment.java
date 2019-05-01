@@ -29,13 +29,13 @@ public class AlarmFragment extends DialogFragment {
 
     private static final String TAG = "AlarmFragment";
     @NonNull
-    @Override
+   // @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.alarm_layout,container,false);
-       // Calendar c = Calendar.getInstance();
-      //  int hour = c.get(Calendar.HOUR_OF_DAY);
-      //  int minute = c.get(Calendar.MINUTE);
+        Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
 
 
 
